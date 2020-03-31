@@ -1,0 +1,20 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  aliyun_f_market_api_1:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'helloworld'
+    aliyun_f_market_api_1:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: code.seven.test.f_market_api_1.App::handleRequest
+        Initializer: code.seven.test.f_market_api_1.App::initialize
+        Runtime: java8
+        CodeUri: './'
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods: ['POST', 'GET']
